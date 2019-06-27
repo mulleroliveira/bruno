@@ -1,5 +1,10 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="modal()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>
       É isso mermo!
     </ion-title>
@@ -8,35 +13,28 @@
 
 <ion-content>
 
-  <ion-list>
+  <ion-slides>
 
-    <ion-item-sliding *ngFor="let contato of contatos">
+    <ion-slide *ngFor="let contato of contatos">
 
-      <ion-item href="contato-detail/{{contato.id}}">
-        <ion-avatar slot="start">
-          <img src="{{contato.url}}">
-        </ion-avatar>
-        <ion-label>
-          <h2>{{contato.nome}}</h2>
-        </ion-label>
-      </ion-item>
+      <ion-card>
 
-      <ion-item-options>
+        <img src="{{contato.url}}">
 
-        <ion-item-option color="danger" (click)="remove(contato)">
-          <ion-icon name="trash"></ion-icon>
-        </ion-item-option>
+        <ion-card-header>
+          <ion-card-title>{{contato.nome}}</ion-card-title>
+          <ion-card-subtitle>{{contato.idade}} Anos</ion-card-subtitle>
+        </ion-card-header>
 
-      </ion-item-options>
+        <ion-item>
+          <ion-icon name="heart" slot="start" (click)="like(contato)"></ion-icon>
+          <ion-badge color="dark" slot="end">{{contato.like}}</ion-badge>
+        </ion-item>
 
-    </ion-item-sliding>
+      </ion-card>
 
-  </ion-list>
+    </ion-slide>
 
-  <ion-fab (click)="modal()" class="button-native" vertical="bottom" horizontal="end">
-    <ion-fab-button>
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+  </ion-slides>
 
 </ion-content>

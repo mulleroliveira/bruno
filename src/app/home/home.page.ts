@@ -11,11 +11,7 @@ import { Storage } from '@ionic/storage';
 export class HomePage {
 
   constructor(public modalController: ModalController, private storage: Storage) {
-    this.storage.get('contato').then((contato) => {
-      if (contato) {
-        this.contatos = contato
-      }
-    })
+    this.storage.clear()
   }
 
   add(contato) {
@@ -38,6 +34,10 @@ export class HomePage {
     modal.onDidDismiss().then((contato) => {
       this.add(contato.data)
     })
+  }
+
+  like(contato) {
+    contato.like = contato.like + 1
   }
 
   contatos = []

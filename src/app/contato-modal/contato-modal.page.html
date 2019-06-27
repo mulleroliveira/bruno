@@ -15,28 +15,19 @@
     <ion-card-content>
 
       <ion-item>
-        <ion-label>Nome: </ion-label>
-        <ion-input [(ngModel)]="novo_contato.nome"></ion-input>
+        <ion-input placeholder="Nome" [(ngModel)]="novo_contato.nome"></ion-input>
       </ion-item>
-
 
       <ion-item>
-        <img src="{{novo_contato.url}}">
+        <ion-input placeholder="Idade" [(ngModel)]="novo_contato.idade"></ion-input>
       </ion-item>
-      <ion-button expand="full" (click)="take_picture()">Take</ion-button>
 
-      <!-- <ion-item>
-        <ion-label>Url: </ion-label>
-        <ion-icon name="camera" slot="end" (click)="take_picture()"></ion-icon>
-        <ion-input [(ngModel)]="novo_contato.url"></ion-input>
-      </ion-item> -->
-
+      <img src="{{novo_contato.avatar}}">
       <ion-item>
-        <ion-label>ID: </ion-label>
-        <ion-input [(ngModel)]="novo_contato.id"></ion-input>
+        <ion-icon id="camera_icon" (click)="take_picture()" name="camera"></ion-icon>
       </ion-item>
 
-      <ion-button expand="full" (click)="add()">Vai</ion-button>
+      <ion-button expand="full" (click)="add()">Ok</ion-button>
 
     </ion-card-content>
 

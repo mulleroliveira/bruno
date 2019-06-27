@@ -17,8 +17,10 @@ export class ContatoModalPage implements OnInit {
 
   novo_contato = {
     "nome": "",
-    "url": "",
-    "id": ""
+    "avatar": "",
+    "idade": "",
+    "like": 0,
+    "id":""
   }
 
   add() {
@@ -36,7 +38,7 @@ export class ContatoModalPage implements OnInit {
     this.camera.getPicture(options).then((imageData) => {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64 (DATA_URL):
-      this.novo_contato.url = 'data:image/jpeg;base64,' + imageData; // Definição do local de salvamento da imagem
+      this.novo_contato.avatar = 'data:image/jpeg;base64,' + imageData; // Definição do local de salvamento da imagem
     }, (err) => {
       alert(err)
     });

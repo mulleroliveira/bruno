@@ -11,13 +11,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { ContatoModalPageModule } from './contato-modal/contato-modal.module';
 import { IonicStorageModule } from '@ionic/storage';
 import { Camera } from '@ionic-native/camera/ngx'; // Passo 1 - Câmera
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule,
+  imports: [
+    HttpClientModule,
+    BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     ContatoModalPageModule,

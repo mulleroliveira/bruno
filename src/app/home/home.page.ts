@@ -4,7 +4,7 @@ import { ContatoModalPage } from '../contato-modal/contato-modal.page';
 import { Storage } from '@ionic/storage';
 import { HttpClient } from '@angular/common/http';
 import { LoadingController } from '@ionic/angular';
-
+import { ServiceService } from '../services/service.service';
 
 @Component({
   selector: 'app-home',
@@ -15,12 +15,12 @@ export class HomePage {
 
   contatos;
 
-  constructor(public modalController: ModalController, private storage: Storage, private http: HttpClient, public loadingController: LoadingController) {
+  constructor(public modalController: ModalController, private storage: Storage, private http: HttpClient, public loadingController: LoadingController, public service:ServiceService) {
     this.loadingController.create({
       message: "Carregando"
     }).then((loader) => {
       loader.present()
-      this.http.get("http://5d14084576f3f5001415f496.mockapi.io/perfil/").subscribe(
+      this.service.list().subscribe(
         (data) => {
           this.contatos = data
           loader.dismiss()
@@ -34,7 +34,7 @@ export class HomePage {
       message:"Carregando"
     }).then((loader) => {
       loader.present()
-      this.http.post("http://5d14084576f3f5001415f496.mockapi.io/perfil/", contato).subscribe(
+      this.service.post(contato).subscribe(
         (data) => {
           this.contatos.push(data)
           this.storage.set('contato', this.contatos)
@@ -49,7 +49,7 @@ export class HomePage {
       message:"Carregando"
     }).then((loader) => {
       loader.present()
-      this.http.delete("http://5d14084576f3f5001415f496.mockapi.io/perfil/" + contato.id).subscribe(
+      this.service.delete(contato.id).subscribe(
         (data) => {
           var i = this.contatos.indexOf(contato);
           this.contatos.splice(i, 1);

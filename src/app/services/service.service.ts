@@ -21,4 +21,8 @@ export class ServiceService {
     return this.http.delete("http://5d14084576f3f5001415f496.mockapi.io/perfil/", contato)
   }
 
+  put(id, contato){
+    return this.http.put("http://5d14084576f3f5001415f496.mockapi.io/perfil/" + id, contato)
+  }
+
 }
